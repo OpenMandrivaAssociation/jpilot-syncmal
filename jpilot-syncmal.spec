@@ -1,5 +1,5 @@
-%define version 0.72.1
-%define release %mkrel 5
+%define version 0.80
+%define release %mkrel 1
 %define url http://jasonday.home.att.net/code/syncmal
 
 Name:		jpilot-syncmal
@@ -7,11 +7,9 @@ Summary:	SyncMAL plugin for J-PILOT
 Version:	%{version}
 Release:	%{release}
 Epoch:		1
-Source:		%{url}/%{name}-%{version}.tar.bz2
+Source:		%{url}/%{name}-%{version}.tar.gz
 Source1:	malsync.tar.bz2
-Patch0:		jpilot-syncmal-0.72.1-lib64.patch
-# (fc) 0.72.1-5mdv fix compilation with pilot-link 0.12.0
-Patch1:		jpilot-syncmal-0.72.1-pilotlink012.patch
+Patch0:		jpilot-syncmal-0.80-lib64.patch
 Group:		Communications
 BuildRoot:	%_tmppath/%name-%version-%release-root
 License:	GPL
@@ -30,7 +28,6 @@ and MAL.
 
 %setup -q -n %{name}-%{version} -a 1
 %patch0 -p1 -b .lib64
-%patch1 -p1 -b .pilotlink012
 
 %build
 %if %_lib == lib64
