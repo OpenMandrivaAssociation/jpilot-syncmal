@@ -17,6 +17,7 @@ BuildRequires:	jpilot_plugin-devel >= 0.99.6
 BuildRequires:	pilot-link-devel >= 0.11.8 
 BuildRequires:	chrpath
 BuildRequires:	libmal-devel >= 0.44
+BuildRequires:	autoconf
 Requires:	malsync
 Url:		http://jasonday.home.att.net/code/syncmal/syncmal.html
 
@@ -33,11 +34,16 @@ AvantGo and MAL.
 %patch0 -p1 -b .lib64
 
 %build
-%if %_lib == lib64
-  %define conf_args enable_libsuffix=64
-%endif
 
-%configure %conf_args --enable-gtk2
+# needed by autoreconf
+cp MPL-1_0.txt COPYING
+touch NEWS
+touch AUTHORS
+
+# needed by patch0
+AUTOMAKE="automake --add-missing" autoreconf
+
+%configure --enable-gtk2
 
 %make 
 
