@@ -53,7 +53,12 @@ AUTOMAKE="automake --add-missing" autoreconf
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%makeinstall_std
+
+# this ridiculous buildsystem seems immune to sensible patching.
+# it only installs stuff in libdir, so let's just set that here.
+# - AdamW 2007/07
+make libdir=%{buildroot}%{_libdir}/jpilot/plugins install
+
 ./libtool --finish %{buildroot}%{_libdir}/jpilot/plugins/
 chrpath -d %{buildroot}%{_libdir}/jpilot/plugins/*.so
 
