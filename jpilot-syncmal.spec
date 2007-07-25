@@ -9,6 +9,9 @@ Release:	%{release}
 Epoch:		1
 Source:		http://jasonday.home.att.net/code/syncmal/%{name}-%{version}.tar.gz
 Patch0:		jpilot-syncmal-0.80-lib64.patch
+# disables GTK+ 1.x test in configure.in, as it trips up autoreconf
+# and we're not building against GTK+ 1.x anyway - AdamW 2007/07
+Patch1:		jpilot-syncmal-0.80-disable_gtk1.patch
 Group:		Communications
 BuildRoot:	%_tmppath/%name-%version-%release-root
 License:	MPL
@@ -32,6 +35,7 @@ AvantGo and MAL.
 
 %setup -q
 %patch0 -p1 -b .lib64
+%patch1 -p1 -b .gtk1
 
 %build
 
