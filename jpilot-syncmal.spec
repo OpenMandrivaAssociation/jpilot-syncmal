@@ -1,32 +1,35 @@
+%define name	jpilot-syncmal
 %define version 0.80
 %define release %mkrel 1
-%define url http://jasonday.home.att.net/code/syncmal
 
-Name:		jpilot-syncmal
+Name:		%{name}
 Summary:	SyncMAL plugin for J-PILOT
 Version:	%{version}
 Release:	%{release}
 Epoch:		1
-Source:		%{url}/%{name}-%{version}.tar.gz
-Source1:	malsync.tar.bz2
+Source:		http://jasonday.home.att.net/code/syncmal/%{name}-%{version}.tar.gz
 Patch0:		jpilot-syncmal-0.80-lib64.patch
 Group:		Communications
 BuildRoot:	%_tmppath/%name-%version-%release-root
-License:	GPL
-BuildRequires:	gtk2-devel jpilot_plugin-devel >= 0.99.6 
-BuildRequires:	pilot-link-devel >= 0.11.8 chrpath
-Url:		%{url}/syncmal.html
+License:	MPL
+BuildRequires:	gtk2-devel 
+BuildRequires:	jpilot_plugin-devel >= 0.99.6 
+BuildRequires:	pilot-link-devel >= 0.11.8 
+BuildRequires:	chrpath
+BuildRequires:	libmal-devel >= 0.44
+Requires:	malsync
+Url:		http://jasonday.home.att.net/code/syncmal/syncmal.html
 
 %description
-SyncMAL is an interface to the command line tool malsync, a program that
-synchronizes a PDA with a MAL server such as AvantGo.
+SyncMAL is an interface to the command line tool malsync, a program
+that synchronizes a PDA with a MAL server such as AvantGo.
 
-See AvantGo's homepage <http://avantgo.com/> for more information on AvantGo
-and MAL.
+See AvantGo's homepage <http://avantgo.com/> for more information on
+AvantGo and MAL.
 
 %prep
 
-%setup -q -n %{name}-%{version} -a 1
+%setup -q
 %patch0 -p1 -b .lib64
 
 %build
@@ -34,7 +37,7 @@ and MAL.
   %define conf_args enable_libsuffix=64
 %endif
 
-%configure --with-mal-source=./mal %conf_args --enable-gtk2
+%configure %conf_args --enable-gtk2
 
 %make 
 
@@ -51,4 +54,3 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %doc ChangeLog MPL-1_0.txt TODO
 %_libdir/jpilot/plugins/*
-
