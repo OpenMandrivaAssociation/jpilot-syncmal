@@ -1,6 +1,6 @@
 %define name	jpilot-syncmal
 %define version 0.80
-%define release %mkrel 2
+%define release %mkrel 3
 
 Name:		%{name}
 Summary:	SyncMAL plugin for J-PILOT
