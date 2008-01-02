@@ -13,6 +13,7 @@ Patch0:		jpilot-syncmal-0.80-lib64.patch
 # and we're not building against GTK+ 1.x anyway - AdamW 2007/07
 Patch1:		jpilot-syncmal-0.80-disable_gtk1.patch
 Group:		Communications
+BuildRoot:	%_tmppath/%name-%version-%release-root
 License:	MPL
 BuildRequires:	gtk2-devel 
 BuildRequires:	jpilot_plugin-devel >= 0.99.6 
