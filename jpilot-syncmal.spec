@@ -1,28 +1,25 @@
-%define name	jpilot-syncmal
-%define version 0.80
-%define release %mkrel 5
-
-Name:		%{name}
 Summary:	SyncMAL plugin for J-PILOT
-Version:	%{version}
-Release:	%{release}
+Name:		jpilot-syncmal
+Version:	0.80
+Release:	%mkrel 6
 Epoch:		1
+License:	MPL
+Group:		Communications
+URL:		http://jasonday.home.att.net/code/syncmal/syncmal.html
 Source:		http://jasonday.home.att.net/code/syncmal/%{name}-%{version}.tar.gz
 Patch0:		jpilot-syncmal-0.80-lib64.patch
 # disables GTK+ 1.x test in configure.in, as it trips up autoreconf
 # and we're not building against GTK+ 1.x anyway - AdamW 2007/07
 Patch1:		jpilot-syncmal-0.80-disable_gtk1.patch
-Group:		Communications
-BuildRoot:	%_tmppath/%name-%version-%release-root
-License:	MPL
+Patch2:		jpilot-syncmal-0.80-libtool_fixes.diff
 BuildRequires:	gtk2-devel 
-BuildRequires:	jpilot_plugin-devel >= 0.99.6 
+BuildRequires:	jpilot-devel >= 0.99.6 
 BuildRequires:	pilot-link-devel >= 0.11.8 
-BuildRequires:	chrpath
 BuildRequires:	libmal-devel >= 0.44
 BuildRequires:	autoconf
 Requires:	malsync
-Url:		http://jasonday.home.att.net/code/syncmal/syncmal.html
+Requires:	jpilot >= 0.99.6 
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 SyncMAL is an interface to the command line tool malsync, a program
@@ -36,6 +33,7 @@ AvantGo and MAL.
 %setup -q
 %patch0 -p1 -b .lib64
 %patch1 -p1 -b .gtk1
+%patch2 -p0 -b .libtool_fixes
 
 %build
 
@@ -52,20 +50,20 @@ AUTOMAKE="automake --add-missing" autoreconf
 %make 
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 # this ridiculous buildsystem seems immune to sensible patching.
 # it only installs stuff in libdir, so let's just set that here.
 # - AdamW 2007/07
-make libdir=%{buildroot}%{_libdir}/jpilot/plugins install
+%makeinstall libdir=%{buildroot}%{_libdir}/jpilot/plugins
 
-./libtool --finish %{buildroot}%{_libdir}/jpilot/plugins/
-chrpath -d %{buildroot}%{_libdir}/jpilot/plugins/*.so
+# cleanup
+rm -f %{buildroot}%{_libdir}/jpilot/plugins/*.*a
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
 %doc ChangeLog MPL-1_0.txt TODO
-%_libdir/jpilot/plugins/*
+%{_libdir}/jpilot/plugins/libsyncmal.so
