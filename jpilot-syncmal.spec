@@ -1,7 +1,7 @@
 Summary:	SyncMAL plugin for J-PILOT
 Name:		jpilot-syncmal
 Version:	0.80
-Release:	%mkrel 9
+Release:	%mkrel 10
 Epoch:		1
 License:	MPL
 Group:		Communications
