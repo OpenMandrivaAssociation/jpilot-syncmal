@@ -1,0 +1,16 @@
+--- Makefile.am	2007-01-06 23:09:15.000000000 +0100
++++ Makefile.am.oden	2008-11-10 13:46:54.000000000 +0100
+@@ -10,11 +10,11 @@
+ lib_LTLIBRARIES = libsyncmal.la
+ 
+ libsyncmal_la_SOURCES = syncmal.c syncmal.h libplugin.h config.h
+-libsyncmal_la_LDFLAGS = -avoid-version
++libsyncmal_la_LDFLAGS = -rpath @libdir@/jpilot/plugins -module -avoid-version
+ libsyncmal_la_LIBADD = @LIBS@ @PILOT_LIBS@ @GTK_LIBS@ @LIBMAL_LIBS@
+ 
+ # install the the jpilot plugins directory
+-libdir = $(prefix)/lib/jpilot/plugins
++libdir=@libdir@/jpilot/plugins
+ 
+ local_install: libsyncmal.la
+ 	$(INSTALL) -d -m 755 $(HOME)/.jpilot/plugins

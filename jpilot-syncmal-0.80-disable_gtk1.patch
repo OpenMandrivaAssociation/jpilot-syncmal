@@ -1,0 +1,13 @@
+--- jpilot-syncmal-0.80/configure.in	2007-07-25 11:59:06.000000000 -0700
++++ jpilot-syncmal-0.80/configure.in.new	2007-07-25 13:09:08.000000000 -0700
+@@ -226,10 +226,6 @@ if test "x$enable_gtk2" = "xyes"; then
+   AM_PATH_GTK_2_0(2.0.3, have_gtk2=yes,
+   AC_MSG_ERROR([*** GTK >= 2.0.3 not found ***]))
+ fi
+-if test "x$have_gtk2" = "xno"; then
+-  AM_PATH_GTK(1.2.0,,
+-    AC_MSG_ERROR([*** GTK >= 1.2.0 not found ***]))
+-fi
+ 
+ dnl Checks for header files.
+ AC_HEADER_STDC
