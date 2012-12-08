@@ -1,7 +1,7 @@
 Summary:	SyncMAL plugin for J-PILOT
 Name:		jpilot-syncmal
 Version:	0.80
-Release:	%mkrel 10
+Release:	%mkrel 12
 Epoch:		1
 License:	MPL
 Group:		Communications
@@ -67,3 +67,73 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %doc ChangeLog MPL-1_0.txt TODO
 %{_libdir}/jpilot/plugins/libsyncmal.so
+
+
+%changelog
+* Wed May 04 2011 Oden Eriksson <oeriksson@mandriva.com> 1:0.80-10mdv2011.0
++ Revision: 665833
+- mass rebuild
+
+* Fri Dec 03 2010 Oden Eriksson <oeriksson@mandriva.com> 1:0.80-9mdv2011.0
++ Revision: 606109
+- rebuild
+
+* Wed Mar 17 2010 Oden Eriksson <oeriksson@mandriva.com> 1:0.80-8mdv2010.1
++ Revision: 523089
+- rebuilt for 2010.1
+
+* Wed Sep 02 2009 Christophe Fergeau <cfergeau@mandriva.com> 1:0.80-7mdv2010.0
++ Revision: 425469
+- rebuild
+
+* Mon Nov 10 2008 Oden Eriksson <oeriksson@mandriva.com> 1:0.80-6mdv2009.1
++ Revision: 301750
+- added some libtool fixes
+- fix deps
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+
+* Sun Jan 13 2008 Thierry Vignaud <tv@mandriva.org> 1:0.80-4mdv2008.1
++ Revision: 150421
+- rebuild
+- kill re-definition of %%buildroot on Pixel's request
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Mon Sep 17 2007 Olivier Blin <oblin@mandriva.com> 1:0.80-3mdv2008.0
++ Revision: 89129
+- rebuild because of package loss
+
+* Wed Jul 25 2007 Adam Williamson <awilliamson@mandriva.org> 1:0.80-2mdv2008.0
++ Revision: 55601
+- okay, let's handle x86-64 a different way
+- update patch0 to fix pilot-link test too
+- add patch1 to disable GTK+ 1.x test which is stopping autoreconf working
+- rework patch
+- update buildrequires
+- no need to include malsync source any more
+- correct license
+- spec clean
+- drop patch1 (equivalent merged upstream)
+- rediff patch0
+- new release 0.80
+
+
+* Tue Sep 05 2006 Frederic Crozat <fcrozat@mandriva.com> 1:0.72.1-5mdv2007.0
+- Patch1: fix build with pilot-link 0.12
+
+* Sat Jul 01 2006 Stefan van der Eijk <stefan@mandriva.org> 1:0.72.1-4
+- update from Cris B <cris@beebgames.com>
+   - switch to gtk2
+
+* Thu Mar 30 2006 Christiaan Welvaart <cjw@daneel.dyndns.org> 1:0.72.1-3mdk
+- use package libtool script
+
+* Wed May 04 2005 Stew Benedict <sbenedict@mandriva.com> 1:0.72.1-2mdk
+- fix 64bit build (P0, configure args)
+
+* Thu Dec 18 2003 Stew Benedict <sbenedict@mandrakesoft.com> 0.72.1-1mdk
+- 0.72.1
+
