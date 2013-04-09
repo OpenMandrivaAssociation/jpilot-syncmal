@@ -12,6 +12,7 @@ Patch0:		jpilot-syncmal-0.80-lib64.patch
 # and we're not building against GTK+ 1.x anyway - AdamW 2007/07
 Patch1:		jpilot-syncmal-0.80-disable_gtk1.patch
 Patch2:		jpilot-syncmal-0.80-libtool_fixes.diff
+Patch3:		jpilot-syncmal-0.80-automake1.13.patch
 BuildRequires:	gtk2-devel 
 BuildRequires:	jpilot-devel >= 0.99.6 
 BuildRequires:	pilot-link-devel >= 0.11.8 
@@ -19,7 +20,6 @@ BuildRequires:	libmal-devel >= 0.44
 BuildRequires:	autoconf
 Requires:	malsync
 Requires:	jpilot >= 0.99.6 
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 SyncMAL is an interface to the command line tool malsync, a program
@@ -34,6 +34,7 @@ AvantGo and MAL.
 %patch0 -p1 -b .lib64
 %patch1 -p1 -b .gtk1
 %patch2 -p0 -b .libtool_fixes
+%patch3 -p1 -b .automake13~
 
 %build
 

@@ -1,0 +1,11 @@
+--- jpilot-syncmal-0.80/configure.in.bero	2013-04-09 20:00:06.210343297 +0200
++++ jpilot-syncmal-0.80/configure.in	2013-04-09 20:00:13.471252523 +0200
+@@ -6,7 +6,7 @@ AM_INIT_AUTOMAKE([1.8])
+ 
+ dnl Check host type
+ AC_CANONICAL_HOST
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS([config.h])
+ AM_MAINTAINER_MODE
+ 
+ AC_SUBST(VERSION)
