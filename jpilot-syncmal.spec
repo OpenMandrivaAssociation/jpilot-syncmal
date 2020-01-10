@@ -31,7 +31,7 @@ AvantGo and MAL.
 %prep
 
 %setup -q
-%apply_patches
+%autopatch -p1
 
 # needed by autoreconf
 cp MPL-1_0.txt COPYING
