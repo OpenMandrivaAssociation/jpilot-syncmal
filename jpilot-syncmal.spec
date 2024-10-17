@@ -5,7 +5,7 @@ Version:	0.80
 Release:	12
 License:	MPL
 Group:		Communications
-Url:		http://jasonday.home.att.net/code/syncmal/syncmal.html
+Url:		https://jasonday.home.att.net/code/syncmal/syncmal.html
 Source0:	http://jasonday.home.att.net/code/syncmal/%{name}-%{version}.tar.gz
 Patch0:		jpilot-syncmal-0.80-lib64.patch
 # disables GTK+ 1.x test in configure.in, as it trips up autoreconf
