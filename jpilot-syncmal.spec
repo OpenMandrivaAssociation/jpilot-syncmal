@@ -14,6 +14,11 @@ Patch1:		jpilot-syncmal-0.80-disable_gtk1.patch
 Patch2:		jpilot-syncmal-0.80-libtool_fixes.diff
 Patch3:		jpilot-syncmal-0.80-automake1.13.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	jpilot-devel >= 0.99.6 
 BuildRequires:	libmal-devel >= 0.44
 BuildRequires:	pkgconfig(gtk+-2.0)
